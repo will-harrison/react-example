@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import Assessments from './assessments'
+import { addAssessment } from './processor'
 
 class App extends Component {
   state = {
@@ -21,18 +22,8 @@ class App extends Component {
   }
 
 
-  addAssessment = (id, lessonId, value) => {
-    let a = this.state.assessments
-    console.log(id, lessonId, value)
-    a.push({
-      id,
-      lesson: {
-        id: lessonId,
-        value
-      }
-    })
-
-    console.log(a)
+  manageAssessment = (id, lessonId, value) => {
+    let a = addAssessment(id, lessonId, value)
     this.setState(state => {
       return {
         ...state,
